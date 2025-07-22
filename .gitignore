@@ -60,8 +60,7 @@ coverage.xml
 .env
 .env.*
 
-# Google credentials
-*.json
+
 
 # VS Code
 .vscode/
