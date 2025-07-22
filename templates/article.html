@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - DCFence Blog{% endblock %}
+
+{% block meta_description %}{{ article.excerpt }}{% endblock %}
+
+{% block meta_keywords %}security fences, perimeter security, {{ article.title|lower }}{% endblock %}
+
+{% block og_title %}{{ article.title }} - DCFence{% endblock %}
+
+{% block og_description %}{{ article.excerpt }}{% endblock %}
+
+{% block content %}
+<!-- Article Header -->
+<section class="bg-gradient-to-r from-blue-900 to-blue-700 py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <nav class="flex justify-center mb-6">
+                <ol class="flex items-center space-x-2 text-sm text-gray-300">
+                    <li><a href="{{ url_for('home') }}" class="hover:text-white transition-colors duration-200">Home</a></li>
+                    <li><i class="fas fa-chevron-right text-xs"></i></li>
+                    <li><a href="{{ url_for('blog') }}" class="hover:text-white transition-colors duration-200">Blog</a></li>
+                    <li><i class="fas fa-chevron-right text-xs"></i></li>
+                    <li class="text-white">{{ article.title|truncate(30) }}</li>
+                </ol>
+            </nav>
+            
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-100 mb-4">{{ article.title }}</h1>
+            {% if article.tags %}
+            <div class="mb-6 flex flex-wrap gap-2">
+                {% for tag in article.tags %}
+                    <span class="inline-block bg-blue-900 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full border-2 border-blue-700">#{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <div class="flex items-center justify-center space-x-6 text-gray-200">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-user text-white text-sm"></i>
+                    </div>
+                    <span>{{ article.author }}</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-calendar mr-2"></i>
+                    <span>{{ article.date }}</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>5 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <!-- Article Image -->
+                <div class="relative h-64 md:h-80 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl mb-8 overflow-hidden">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="{{ article.image }}" alt="{{ article.title }}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <!-- Article Body -->
+                <article class="prose prose-lg max-w-none">
+                    <div class="text-gray-700 leading-relaxed">
+                        {{ article.content|safe }}
+                    </div>
+                </article>
+                
+                <!-- Article Footer -->
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-600">Share:</span>
+                            <div class="flex space-x-3">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" target="_blank" rel="noopener" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors duration-200">
+                                    <i class="fab fa-facebook-f text-blue-600"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ article.title }}" target="_blank" rel="noopener" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors duration-200">
+                                    <i class="fab fa-twitter text-blue-600"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.url }}&title={{ article.title }}" target="_blank" rel="noopener" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors duration-200">
+                                    <i class="fab fa-linkedin-in text-blue-600"></i>
+                                </a>
+                                <a href="mailto:?subject={{ article.title }}&body={{ request.url }}" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors duration-200">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 text-gray-400">
+                            <i class="fas fa-eye"></i>
+                            <span class="text-sm">1,234 views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Author Info -->
+                <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">{{ article.author }}</h3>
+                            <p class="text-sm text-gray-600">Security Specialist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Expert in perimeter security with over 8 years of experience in security fence installation and maintenance.
+                    </p>
+                </div>
+                
+                <!-- Related Articles -->
+                <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Articles</h3>
+                    <div class="space-y-4">
+                        {% for other in related_articles %}
+                        <a href="{{ url_for('article', article_id=other.id) }}" class="block group">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-16 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <img src="{{ other.image }}" alt="{{ other.title }}" class="w-full h-full object-cover border-2 border-blue-600 rounded-lg">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                                        {{ other.title }}
+                                    </h4>
+                                    <p class="text-sm text-gray-600 mt-1">{{ other.excerpt | truncate(50) }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Newsletter Signup -->
+                <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-6 text-white">
+                    <h3 class="text-lg font-semibold mb-3">Stay Informed</h3>
+                    <p class="text-blue-100 text-sm mb-4">
+                        Receive the latest articles about perimeter security directly in your email.
+                    </p>
+                    <form id="newsletterForm" class="space-y-3">
+                        <input type="email"
+                               id="newsletterEmail"
+                               required
+                               placeholder="Your email address"
+                               class="w-full px-4 py-2 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-white focus:border-transparent">
+                        <button type="submit" class="w-full bg-white text-blue-600 font-semibold py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                            Subscribe
+                        </button>
+                        <p id="newsletterMsg" class="text-sm mt-4"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Articles Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                More Articles
+            </h2>
+            <p class="text-xl text-gray-600">
+                Discover more content about perimeter security
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Related Article 1 -->
+            {% for other in related_articles %}
+            <article class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="relative h-48 bg-gradient-to-br from-blue-500 to-blue-700">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="{{ other.image }}" alt="{{ other.title }}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">
+                        {{ other.title }}
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        {{ other.excerpt }}
+                    </p>
+                    <a href="{{ url_for('article', article_id=other.id) }}" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                        Read more →
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 gradient-bg">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            Need to implement perimeter security?
+        </h2>
+        <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+            Our experts are ready to evaluate your needs and provide you with the best security solution.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{{ url_for('contact') }}" 
+               class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white text-blue-600 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300">
+                <i class="fas fa-phone mr-3"></i>
+                Request Quote
+            </a>
+            <a href="{{ url_for('blog') }}" 
+               class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
+                <i class="fas fa-book mr-3"></i>
+                View More Articles
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %} 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const msg = document.getElementById('newsletterMsg');
+    if (form && emailInput && msg) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            msg.textContent = '';
+            fetch('/newsletter-subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: emailInput.value })
+            })
+            .then(res => res.json().then(data => ({ status: res.status, body: data })))
+            .then(({ status, body }) => {
+                if (status === 429) {
+                    msg.textContent = 'You have reached the maximum number of subscriptions from this device.';
+                    msg.className = 'text-red-600 text-sm mt-4';
+                } else if (body.success) {
+                    msg.textContent = 'Thank you for subscribing!';
+                    msg.className = 'text-green-600 text-sm mt-4';
+                    form.reset();
+                } else {
+                    msg.textContent = body.error || 'There was an error. Please try again.';
+                    msg.className = 'text-red-600 text-sm mt-4';
+                }
+            })
+            .catch(() => {
+                msg.textContent = 'Network error. Please try again.';
+                msg.className = 'text-red-600 text-sm mt-4';
+            });
+        });
+    }
+});
+</script> 

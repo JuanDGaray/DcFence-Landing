@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}DCFence - Perimeter security specialists. Installation of residential, commercial and governmental security fences with over 8 years of experience.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}security fences, perimeter security, residential fences, commercial fences, governmental fences, property protection{% endblock %}">
+    <meta name="author" content="DCFence">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}DCFence - Professional Perimeter Security{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Specialists in security fence installation for residential, commercial and governmental properties.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80{% endblock %}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}DCFence - Professional Perimeter Security{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Specialists in security fence installation for residential, commercial and governmental properties.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80{% endblock %}">
+    
+    <title>{% block title %}DCFence - Professional Perimeter Security{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(59, 130, 246, 0.9) 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+        }
+    </style>
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="font-sans text-gray-900 bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="{{ url_for('home') }}" class="flex items-center space-x-2">
+                        <img src="{{ url_for('static', filename='images/logoPngsm.png') }}" 
+                                 alt="DCFence Logo" 
+                                 class="object-contain w-[120px]">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-md font-medium transition-colors duration-200 font-bold">Home</a>
+                        <a href="{{ url_for('blog') }}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-md font-medium transition-colors duration-200 font-bold">Newsletters</a>
+                        <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary-600 px-3 py-2 text-md font-medium transition-colors duration-200 font-bold">Contact</a>
+                        
+                        <!-- GET FREE QUOTE Button -->
+                        <a href="{{ url_for('contact') }}" 
+                           class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-orange-400">
+                            <i class="fas fa-gift mr-2"></i>
+                            GET FREE QUOTE
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button bg-white p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+                <a href="{{ url_for('home') }}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">Home</a>
+                <a href="{{ url_for('blog') }}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">Blog</a>
+                <a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-lg {% if category == 'success' %}bg-green-50 border border-green-200 text-green-800{% else %}bg-red-50 border border-red-200 text-red-800{% endif %}">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas {% if category == 'success' %}fa-check-circle text-green-400{% else %}fa-exclamation-circle text-red-400{% endif %}"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium">{{ message }}</p>
+                            </div>
+                            <div class="ml-auto pl-3">
+                                <button type="button" class="close-alert inline-flex text-gray-400 hover:text-gray-600">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4 bg-white rounded-lg p-2 w-fit">
+                        <img src="{{ url_for('static', filename='images/logoPngsm.png') }}" 
+                                 alt="DCFence Logo" 
+                                 class="object-contain w-[120px]">
+                    </div>
+                    <p class="text-gray-200 mb-6 max-w-md">
+                        Perimeter security specialists with over 8 years of experience protecting residential, commercial and governmental properties.
+                    </p>
+                    <div class="flex space-x-4 hidden">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors duration-200">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                 
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ url_for('residential') }}" class="text-gray-200 hover:text-white transition-colors duration-200">Residential Fences</a></li>
+                        <li><a href="{{ url_for('commercial') }}" class="text-gray-200 hover:text-white transition-colors duration-200">Commercial Fences</a></li>
+                        <li><a href="{{ url_for('governmental') }}" class="text-gray-200 hover:text-white transition-colors duration-200">Governmental Fences</a></li>
+                        <li><a href="{{ url_for('security') }}" class="text-gray-200 hover:text-white transition-colors duration-200">Security Systems</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-gray-300"></i>
+                            <span class="text-gray-200">786-747-4766</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-gray-300"></i>
+                            <span class="text-gray-200">dcfenceapp@dcfence.org</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt text-gray-300"></i>
+                            <span class="text-gray-200">2498 W Third CT, Hialeah FL 33010</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-globe text-gray-300"></i>
+                            <span class="text-gray-200">www.dcfence.org</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xs text-gray-300 space-y-1">
+                        <div>Lic: 20BS00539/21-F22501-R</div>
+                        <div>SBE-CON/SBE-G&amp;S/LDB CAGE:8ZKA7 Duns:117970612</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-200 text-sm">&copy; 2024 DCFence. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="{{ url_for('privacy') }}" class="text-gray-200 hover:text-white text-sm transition-colors duration-200">Privacy Policy</a>
+                        <a href="{{ url_for('terms') }}" class="text-gray-200 hover:text-white text-sm transition-colors duration-200">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Bubble -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+        <!-- Direct Chat Button -->
+        <div class="relative">
+            <button onclick="toggleChatPanel()" 
+                    class="flex items-center justify-center w-16 h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 cursor-pointer">
+                <i class="fas fa-comments text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Side Panel -->
+    <div id="chatPanel" class="fixed bottom-6 right-24 z-40 transform translate-x-[150%] transition-transform duration-300 ease-in-out">
+        <div class="bg-white rounded-2xl shadow-2xl w-100 h-[75vh] flex flex-col">
+            <!-- Header -->
+            <div class="bg-blue-500 text-white p-4 rounded-t-2xl flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-robot text-white"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold">DCFence Assistant</div>
+                        <div class="text-sm text-blue-100">Online</div>
+                    </div>
+                </div>
+                <button onclick="toggleChatPanel()" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="flex-1 p-4 overflow-y-auto">
+                <div class="space-y-4" id="chatMessages">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-blue-600 text-sm"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                            <p class="text-sm text-gray-700">Hello! I'm here to help you with information about our security fence services. What's your name?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex space-x-2">
+                    <input type="text" 
+                           id="chatInput" 
+                           placeholder="Type your name..." 
+                           class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                    <button onclick="sendBotMessage()" 
+                            class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="mt-2 text-xs text-gray-500">
+                    Or call directly: <a href="tel:786-747-4766" class="text-blue-500 hover:underline">786-747-4766</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- reCAPTCHA Modal -->
+    <div id="recaptchaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+                <!-- Header -->
+                <div class="bg-blue-500 text-white p-4 rounded-t-2xl flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold">Security Verification</div>
+                            <div class="text-sm text-blue-100">Please verify you're human</div>
+                        </div>
+                    </div>
+                    <button onclick="closeRecaptchaModal()" class="text-white hover:text-gray-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- reCAPTCHA Content -->
+                <div class="p-6">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-robot text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Verify You're Human</h3>
+                        <p class="text-sm text-gray-600">Please complete the verification to send your information to an advisor.</p>
+                    </div>
+                    
+                    <div class="flex justify-center mb-6">
+                        <div id="recaptcha-container"></div>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button onclick="closeRecaptchaModal()" 
+                                class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button onclick="verifyAndSend()" 
+                                class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                            Send to Advisor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de reCAPTCHA exclusivo para el chat/advisor -->
+    <div id="chatRecaptchaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+                <!-- Header -->
+                <div class="bg-blue-500 text-white p-4 rounded-t-2xl flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold">Security Verification</div>
+                            <div class="text-sm text-blue-100">Please verify you're human</div>
+                        </div>
+                    </div>
+                    <button type="button" id="closeChatRecaptchaModal" class="text-white hover:text-gray-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <!-- reCAPTCHA Content -->
+                <div class="p-6">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-robot text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Verify You're Human</h3>
+                        <p class="text-sm text-gray-600">Please complete the verification to send your information to an advisor.</p>
+                    </div>
+                    <div class="flex justify-center mb-6">
+                        <div id="chat-modal-recaptcha-container"></div>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button type="button" id="closeChatRecaptchaModalBtn"
+                                class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="button" id="chatSendToAdvisorBtn"
+                                class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                            Send to Advisor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- reCAPTCHA Script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close flash messages
+        document.querySelectorAll('.close-alert').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.mb-4').remove();
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animated Counter
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        if (!counter.classList.contains('animated')) {
+                            counter.classList.add('animated');
+                            animateCounter(counter, target);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe the stats section
+        const statsSection = document.querySelector('.bg-white\\/10');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Bot state management
+        let botState = {
+            step: 'name',
+            userData: {
+                name: '',
+                email: '',
+                phone: '',
+                inquiryType: '',
+                projectDetails: ''
+            }
+        };
+
+        function processBotResponse(userInput) {
+            const chatContainer = document.getElementById('chatMessages');
+            const input = document.getElementById('chatInput');
+            
+            switch(botState.step) {
+                case 'name':
+                    botState.userData.name = userInput;
+                    botState.step = 'email';
+                    addBotMessage(`Nice to meet you, ${userInput}! What's your email address?`);
+                    input.placeholder = "Enter your email...";
+                    break;
+                    
+                case 'email':
+                    // Validate email format
+                    if (!isValidEmail(userInput)) {
+                        addBotMessage(`That doesn't look like a valid email address. Please enter a valid email (example: john@email.com)`);
+                        input.placeholder = "Enter a valid email...";
+                        return;
+                    }
+                    
+                    botState.userData.email = userInput;
+                    botState.step = 'confirmEmail';
+                    addBotMessageWithButtons(`I have your email as: ${userInput}
+Is this correct?`, ['Yes', 'No']);
+                    input.placeholder = "Type 'yes' or 'no'...";
+                    break;
+                    
+                case 'confirmEmail':
+                    if (userInput.toLowerCase().includes('yes') || userInput.toLowerCase().includes('correct')) {
+                        botState.step = 'phone';
+                        addBotMessage(`Great! Now I need your phone number for the advisor to contact you.`);
+                        input.placeholder = "Enter your phone number...";
+                    } else if (userInput.toLowerCase().includes('no') || userInput.toLowerCase().includes('change')) {
+                        botState.step = 'email';
+                        addBotMessage(`No problem! Please enter your correct email address:`);
+                        input.placeholder = "Enter your email...";
+                    } else {
+                        addBotMessageWithButtons(`Please confirm if the email is correct:`, ['Yes', 'No']);
+                        input.placeholder = "Type 'yes' or 'no'...";
+                    }
+                    break;
+                    
+                case 'phone':
+                    botState.userData.phone = userInput;
+                    botState.step = 'confirmPhone';
+                    addBotMessageWithButtons(`I have your phone number as: ${userInput}
+Is this correct?`, ['Yes', 'No']);
+                    input.placeholder = "Type 'yes' or 'no'...";
+                    break;
+                    
+                case 'confirmPhone':
+                    if (userInput.toLowerCase().includes('yes') || userInput.toLowerCase().includes('correct')) {
+                        botState.step = 'inquiry';
+                        addBotMessageWithInquiryButtons(`Perfect! Now, what type of information are you looking for?`);
+                        input.placeholder = "Type your inquiry...";
+                    } else if (userInput.toLowerCase().includes('no') || userInput.toLowerCase().includes('change')) {
+                        botState.step = 'phone';
+                        addBotMessage(`No problem! Please enter your correct phone number:`);
+                        input.placeholder = "Enter your phone number...";
+                    } else {
+                        addBotMessageWithButtons(`Please confirm if the phone number is correct:`, ['Yes', 'No']);
+                        input.placeholder = "Type 'yes' or 'no'...";
+                    }
+                    break;
+                    
+                case 'inquiry':
+                    botState.userData.inquiryType = userInput.toLowerCase();
+                    botState.step = 'response';
+                    
+                    // Provide information based on inquiry type
+                    let response = getInquiryResponse(userInput);
+                    addBotMessage(response);
+                    
+                    // After providing info, offer advisor contact
+                    setTimeout(() => {
+                        addBotMessageWithButtons(`Did this answer your question? If you need more specific information or want to discuss your project, I can send your information to an advisor.`, ['Yes, send to advisor', 'No, thanks']);
+                        botState.step = 'final';
+                        input.placeholder = "Type 'yes' to send to advisor or 'no' to end...";
+                    }, 1000);
+                    break;
+                    
+                case 'final':
+                    if (userInput.toLowerCase().includes('yes') || userInput.toLowerCase().includes('advisor') || userInput.toLowerCase().includes('send')) {
+                        botState.step = 'projectDetails';
+                        
+                        addBotMessage(`<div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-user-tie text-blue-600"></i>
+                                <span class="font-semibold text-gray-800">Sending Information to Advisor</span>
+                            </div>
+                            
+                            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                                <p class="text-sm mb-4">Please tell me about your project so I can send complete information to the advisor:</p>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-home text-white text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Property Type</p>
+                                            <p class="text-xs text-gray-600">Residential, commercial, or governmental</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-ruler-combined text-white text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Area Size</p>
+                                            <p class="text-xs text-gray-600">Approximate size of the area to be fenced</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-shield-alt text-white text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Security Requirements</p>
+                                            <p class="text-xs text-gray-600">Any specific security needs or features</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-calendar-alt text-white text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Timeline</p>
+                                            <p class="text-xs text-gray-600">When you need the project completed</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <i class="fas fa-plus text-white text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Additional Details</p>
+                                            <p class="text-xs text-gray-600">Any other important information</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                                <p class="text-sm font-medium text-green-800">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    Please provide as much detail as possible to help your advisor prepare the best solution for you.
+                                </p>
+                            </div>
+                        </div>`);
+                        input.placeholder = "Describe your project details...";
+                    } else {
+                        addBotMessage(`Thank you for visiting DCFence! If you have any questions later, feel free to reach out. You can call us at 786-747-4766 or visit our website.`);
+                    }
+                    break;
+                    
+                case 'projectDetails':
+                    botState.userData.projectDetails = userInput;
+                    botState.step = 'reviewInfo';
+                    
+                    addBotMessage(`<div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-check text-blue-600"></i>
+                            <span class="font-semibold text-gray-800">Review Your Information</span>
+                        </div>
+                        
+                        <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                            <p class="text-sm font-medium text-blue-800 mb-3">Please review your information before I send it to an advisor:</p>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Name:</span>
+                                    <span class="font-medium">${botState.userData.name}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Email:</span>
+                                    <span class="font-medium">${botState.userData.email}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Phone:</span>
+                                    <span class="font-medium">${botState.userData.phone}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Inquiry:</span>
+                                    <span class="font-medium">${botState.userData.inquiryType}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Project Details:</span>
+                                    <span class="font-medium">${botState.userData.projectDetails}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-500">
+                            <p class="text-sm font-medium text-yellow-800">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Would you like to modify any information before I send it to an advisor?
+                            </p>
+                        </div>
+                    </div>`);
+                    
+                    addBotMessageWithButtons(`Is all the information correct?`, ['Yes, send to advisor', 'No, I want to modify']);
+                    input.placeholder = "Type 'yes' to send or 'no' to modify...";
+                    break;
+                    
+                case 'reviewInfo':
+                    if (userInput.toLowerCase().includes('yes') || userInput.toLowerCase().includes('send')) {
+                        // Show reCAPTCHA modal instead of directly sending
+                        showRecaptchaModal();
+                    } else {
+                        botState.step = 'modifyInfo';
+                        addBotMessage(`<div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-edit text-blue-600"></i>
+                                <span class="font-semibold text-gray-800">Modify Information</span>
+                            </div>
+                            
+                            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500">
+                                <p class="text-sm font-medium text-blue-800 mb-3">What information would you like to modify?</p>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-user text-blue-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-800">Name</p>
+                                                <p class="text-xs text-gray-500">Change your name</p>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleModification('name')" class="px-3 py-1 bg-blue-500 text-white rounded text-xs hover:bg-blue-600 transition-colors">
+                                            Modify
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-envelope text-green-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-800">Email</p>
+                                                <p class="text-xs text-gray-500">Change your email address</p>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleModification('email')" class="px-3 py-1 bg-green-500 text-white rounded text-xs hover:bg-green-600 transition-colors">
+                                            Modify
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-phone text-purple-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-800">Phone</p>
+                                                <p class="text-xs text-gray-500">Change your phone number</p>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleModification('phone')" class="px-3 py-1 bg-purple-500 text-white rounded text-xs hover:bg-purple-600 transition-colors">
+                                            Modify
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-question-circle text-orange-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-800">Inquiry Type</p>
+                                                <p class="text-xs text-gray-500">Change your inquiry type</p>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleModification('inquiry')" class="px-3 py-1 bg-orange-500 text-white rounded text-xs hover:bg-orange-600 transition-colors">
+                                            Modify
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-clipboard-list text-red-600 text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-800">Project Details</p>
+                                                <p class="text-xs text-gray-500">Modify project information</p>
+                                            </div>
+                                        </div>
+                                        <button onclick="handleModification('project')" class="px-3 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600 transition-colors">
+                                            Modify
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-500">
+                                <p class="text-sm font-medium text-yellow-800">
+                                    <i class="fas fa-info-circle mr-2"></i>
+                                    Click on any option above to modify that information, or type your choice below.
+                                </p>
+                            </div>
+                        </div>`);
+                        input.placeholder = "What would you like to modify?";
+                    }
+                    break;
+                    
+                case 'modifyInfo':
+                    const modification = userInput.toLowerCase();
+                    if (modification.includes('name')) {
+                        botState.step = 'name';
+                        addBotMessage(`Please enter your correct name:`);
+                        const input = document.getElementById('chatInput');
+                        input.placeholder = "Enter your name...";
+                    } else if (modification.includes('email')) {
+                        botState.step = 'email';
+                        addBotMessage(`Please enter your correct email address:`);
+                        const input = document.getElementById('chatInput');
+                        input.placeholder = "Enter your email...";
+                    } else if (modification.includes('phone')) {
+                        botState.step = 'phone';
+                        addBotMessage(`Please enter your correct phone number:`);
+                        const input = document.getElementById('chatInput');
+                        input.placeholder = "Enter your phone number...";
+                    } else if (modification.includes('inquiry')) {
+                        botState.step = 'inquiry';
+                        addBotMessageWithInquiryButtons(`Please select your inquiry type again:`);
+                        const input = document.getElementById('chatInput');
+                        input.placeholder = "Type your inquiry...";
+                    } else if (modification.includes('project') || modification.includes('details')) {
+                        botState.step = 'projectDetails';
+                        addBotMessage(`Please provide your project details again:`);
+                        const input = document.getElementById('chatInput');
+                        input.placeholder = "Describe your project details...";
+                    } else {
+                        addBotMessage(`I didn't understand. Please specify what you want to modify: name, email, phone, inquiry, or project details.`);
+                        input.placeholder = "What would you like to modify?";
+                    }
+                    break;
+            }
+        }
+
+        function updateHeaderStatus(status, showSpinner) {
+            const statusElement = document.querySelector('#chatPanel .text-blue-100');
+            if (statusElement) {
+                if (showSpinner) {
+                    statusElement.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>${status}`;
+                } else {
+                    statusElement.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${status}`;
+                }
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function addBotMessage(message) {
+            const chatContainer = document.getElementById('chatMessages');
+            const botMessage = document.createElement('div');
+            botMessage.className = 'flex items-start space-x-3';
+            botMessage.innerHTML = `
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-blue-600 text-sm"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+            `;
+            chatContainer.appendChild(botMessage);
+            
+            // Scroll to bottom
+            const chatMessagesContainer = document.querySelector('#chatPanel .overflow-y-auto');
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function addBotMessageWithButtons(message, buttons) {
+            const chatContainer = document.getElementById('chatMessages');
+            const botMessage = document.createElement('div');
+            botMessage.className = 'flex items-start space-x-3';
+            
+            let buttonsHtml = '';
+            buttons.forEach(button => {
+                buttonsHtml += `<button onclick="handleButtonClick('${button}')" class="mr-2 mb-2 px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors">${button}</button>`;
+            });
+            
+            botMessage.innerHTML = `
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-blue-600 text-sm"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                    <p class="text-sm text-gray-700 mb-3">${message}</p>
+                    <div class="flex flex-wrap" id="activeButtons">
+                        ${buttonsHtml}
+                    </div>
+                </div>
+            `;
+            chatContainer.appendChild(botMessage);
+            
+            // Scroll to bottom
+            const chatMessagesContainer = document.querySelector('#chatPanel .overflow-y-auto');
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function addBotMessageWithInquiryButtons(message) {
+            const chatContainer = document.getElementById('chatMessages');
+            const botMessage = document.createElement('div');
+            botMessage.className = 'flex items-start space-x-3';
+            
+            const inquiryTypes = [
+                'Residential Fences',
+                'Commercial Fences',
+                'Governmental Fences',
+                'Pricing Information',
+                'Installation Process',
+                'Maintenance Services'
+            ];
+            
+            let buttonsHtml = '';
+            inquiryTypes.forEach(type => {
+                buttonsHtml += `<button onclick="handleInquiryButtonClick('${type}')" class="mr-2 mb-2 px-3 py-2 bg-green-500 text-white rounded-lg text-xs hover:bg-green-600 transition-colors">${type}</button>`;
+            });
+            
+            botMessage.innerHTML = `
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-blue-600 text-sm"></i>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                    <p class="text-sm text-gray-700 mb-3">${message}</p>
+                    <div class="flex flex-wrap" id="inquiryButtons">
+                        ${buttonsHtml}
+                    </div>
+                </div>
+            `;
+            chatContainer.appendChild(botMessage);
+            
+            // Scroll to bottom
+            const chatMessagesContainer = document.querySelector('#chatPanel .overflow-y-auto');
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function handleButtonClick(buttonText) {
+            // Disable all buttons in the current message
+            const activeButtons = document.getElementById('activeButtons');
+            if (activeButtons) {
+                const buttons = activeButtons.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    button.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                    button.classList.add('bg-gray-400', 'cursor-not-allowed');
+                });
+            }
+            
+            // Simulate user typing and sending the button text
+            const input = document.getElementById('chatInput');
+            input.value = buttonText;
+            sendBotMessage();
+        }
+
+        function handleInquiryButtonClick(inquiryType) {
+            // Disable all inquiry buttons
+            const inquiryButtons = document.getElementById('inquiryButtons');
+            if (inquiryButtons) {
+                const buttons = inquiryButtons.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    button.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    button.classList.add('bg-gray-400', 'cursor-not-allowed');
+                });
+            }
+            
+            // Simulate user typing and sending the inquiry type
+            const input = document.getElementById('chatInput');
+            input.value = inquiryType;
+            sendBotMessage();
+        }
+
+        function addAdvisorContactButton() {
+            const chatContainer = document.getElementById('chatMessages');
+            const contactButton = document.createElement('div');
+            contactButton.className = 'flex items-start space-x-3';
+            contactButton.innerHTML = `
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-blue-600 text-sm"></i>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3 max-w-xs">
+                    <p class="text-sm text-gray-700 mb-2">Would you like to speak with an advisor now?</p>
+                    <button onclick="contactAdvisor()" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>Contact Advisor
+                    </button>
+                </div>
+            `;
+            chatContainer.appendChild(contactButton);
+            
+            // Scroll to bottom
+            const chatMessagesContainer = document.querySelector('#chatPanel .overflow-y-auto');
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function contactAdvisor() {
+            addBotMessage(`Great! I'm connecting you with an advisor. They will contact you at ${botState.userData.email} within 24 hours, or you can call us directly at 786-747-4766. Thank you for choosing DCFence!`);
+        }
+
+        function getInquiryResponse(inquiry) {
+            const inquiryLower = inquiry.toLowerCase();
+            
+            if (inquiryLower.includes('residential') || inquiryLower.includes('home')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-home text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Residential Fence Services</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-shield-alt text-green-500 text-xs"></i>
+                                <span>Custom security fences</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-eye-slash text-green-500 text-xs"></i>
+                                <span>Privacy fences</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-swimming-pool text-green-500 text-xs"></i>
+                                <span>Pool safety fences</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-seedling text-green-500 text-xs"></i>
+                                <span>Garden protection</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-clock text-green-500 text-xs"></i>
+                                <span>Installation in 1-3 days</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-certificate text-green-500 text-xs"></i>
+                                <span>5-year warranty on materials</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-gift mr-2"></i>
+                            We offer free consultations and quotes for all residential projects.
+                        </p>
+                    </div>
+                </div>`;
+            } else if (inquiryLower.includes('commercial') || inquiryLower.includes('business')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-building text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Commercial Fence Solutions</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-shield-alt text-green-500 text-xs"></i>
+                                <span>High-security perimeter fencing</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-key text-green-500 text-xs"></i>
+                                <span>Access control systems</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-parking text-green-500 text-xs"></i>
+                                <span>Parking lot protection</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-industry text-green-500 text-xs"></i>
+                                <span>Industrial security</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-eye text-green-500 text-xs"></i>
+                                <span>24/7 monitoring options</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-palette text-green-500 text-xs"></i>
+                                <span>Custom designs for your brand</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-handshake mr-2"></i>
+                            We work with businesses of all sizes and offer flexible payment options.
+                        </p>
+                    </div>
+                </div>`;
+            } else if (inquiryLower.includes('governmental') || inquiryLower.includes('government') || inquiryLower.includes('school')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-landmark text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Governmental Fence Services</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-graduation-cap text-green-500 text-xs"></i>
+                                <span>School security fencing</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-university text-green-500 text-xs"></i>
+                                <span>Public building protection</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-medal text-green-500 text-xs"></i>
+                                <span>Military-grade materials</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-wheelchair text-green-500 text-xs"></i>
+                                <span>ADA compliance</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-exclamation-triangle text-green-500 text-xs"></i>
+                                <span>Emergency access systems</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-file-contract text-green-500 text-xs"></i>
+                                <span>Government contract experience</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-certificate mr-2"></i>
+                            We're licensed and certified for government projects.
+                        </p>
+                    </div>
+                </div>`;
+            } else if (inquiryLower.includes('price') || inquiryLower.includes('cost') || inquiryLower.includes('quote')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-dollar-sign text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Pricing Information</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <p class="text-sm mb-3">Our pricing varies based on:</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-ruler text-green-500 text-xs"></i>
+                                <span>Fence type and materials</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-expand-arrows-alt text-green-500 text-xs"></i>
+                                <span>Project size and complexity</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-tools text-green-500 text-xs"></i>
+                                <span>Installation requirements</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-shield-alt text-green-500 text-xs"></i>
+                                <span>Additional security features</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-500">
+                        <p class="text-sm font-medium text-yellow-800">
+                            <i class="fas fa-gift mr-2"></i>
+                            We offer free, no-obligation quotes.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 border-l-4 border-gray-500">
+                        <p class="text-sm font-medium text-gray-800">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            Typical ranges: Residential $2,500-$15,000, Commercial $10,000-$50,000+
+                        </p>
+                    </div>
+                </div>`;
+            } else if (inquiryLower.includes('install') || inquiryLower.includes('process')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-cogs text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Installation Process</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <ol class="space-y-3 text-sm">
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</span>
+                                <div>
+                                    <span class="font-medium">Free consultation and site survey</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</span>
+                                <div>
+                                    <span class="font-medium">Custom design and quote</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</span>
+                                <div>
+                                    <span class="font-medium">Material selection and ordering</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</span>
+                                <div>
+                                    <span class="font-medium">Professional installation (1-3 days residential, 1-2 weeks commercial)</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">5</span>
+                                <div>
+                                    <span class="font-medium">Quality inspection and testing</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">6</span>
+                                <div>
+                                    <span class="font-medium">Maintenance guidance</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-clipboard-check mr-2"></i>
+                            We handle all permits and ensure code compliance.
+                        </p>
+                    </div>
+                </div>`;
+            } else if (inquiryLower.includes('maintenance') || inquiryLower.includes('service')) {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-wrench text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Maintenance Services</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-search text-green-500 text-xs"></i>
+                                <span>Regular inspections</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-tools text-green-500 text-xs"></i>
+                                <span>Preventive maintenance</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-exclamation-triangle text-green-500 text-xs"></i>
+                                <span>Emergency repairs</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-broom text-green-500 text-xs"></i>
+                                <span>Cleaning and upkeep</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-arrow-up text-green-500 text-xs"></i>
+                                <span>System upgrades</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-clock text-green-500 text-xs"></i>
+                                <span>24/7 emergency support</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-file-contract mr-2"></i>
+                            We offer maintenance contracts with priority service.
+                        </p>
+                    </div>
+                </div>`;
+            } else {
+                return `<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-info-circle text-blue-600"></i>
+                        <span class="font-semibold text-gray-800">Welcome to DCFence!</span>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <p class="text-sm mb-3">We specialize in security fencing for:</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-home text-green-500 text-xs"></i>
+                                <span>Residential properties</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-building text-green-500 text-xs"></i>
+                                <span>Commercial properties</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-landmark text-green-500 text-xs"></i>
+                                <span>Governmental properties</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800">
+                            <i class="fas fa-gift mr-2"></i>
+                            We offer free consultations and quotes for all projects.
+                        </p>
+                    </div>
+                </div>`;
+            }
+        }
+
+        // Chat Panel Functions
+        function toggleChatPanel() {
+            const panel = document.getElementById('chatPanel');
+            panel.classList.toggle('translate-x-[150%]');
+        }
+
+        // Enter key to send message
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('chatInput') === document.activeElement) {
+                sendBotMessage();
+            }
+        });
+
+        function sendBotMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat
+            const chatContainer = document.getElementById('chatMessages');
+            const userMessage = document.createElement('div');
+            userMessage.className = 'flex items-start space-x-3 justify-end';
+            userMessage.innerHTML = `
+                <div class="bg-blue-500 text-white rounded-lg p-3 max-w-xs">
+                    <p class="text-sm">${message}</p>
+                </div>
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user text-white text-sm"></i>
+                </div>
+            `;
+            chatContainer.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Process bot response based on current step
+            setTimeout(() => {
+                processBotResponse(message);
+            }, 500);
+            
+            // Scroll to bottom
+            const chatMessagesContainer = document.querySelector('#chatPanel .overflow-y-auto');
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function handleModification(modificationType) {
+            // Disable all modification buttons
+            const modificationButtons = document.querySelectorAll('[onclick^="handleModification"]');
+            modificationButtons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-orange-500', 'bg-red-500', 'hover:bg-blue-600', 'hover:bg-green-600', 'hover:bg-purple-600', 'hover:bg-orange-600', 'hover:bg-red-600');
+                button.classList.add('bg-gray-400', 'cursor-not-allowed');
+                button.textContent = 'Selected';
+            });
+            
+            const modification = modificationType.toLowerCase();
+            if (modification.includes('name')) {
+                botState.step = 'name';
+                addBotMessage(`Please enter your correct name:`);
+                const input = document.getElementById('chatInput');
+                input.placeholder = "Enter your name...";
+            } else if (modification.includes('email')) {
+                botState.step = 'email';
+                addBotMessage(`Please enter your correct email address:`);
+                const input = document.getElementById('chatInput');
+                input.placeholder = "Enter your email...";
+            } else if (modification.includes('phone')) {
+                botState.step = 'phone';
+                addBotMessage(`Please enter your correct phone number:`);
+                const input = document.getElementById('chatInput');
+                input.placeholder = "Enter your phone number...";
+            } else if (modification.includes('inquiry')) {
+                botState.step = 'inquiry';
+                addBotMessageWithInquiryButtons(`Please select your inquiry type again:`);
+                const input = document.getElementById('chatInput');
+                input.placeholder = "Type your inquiry...";
+            } else if (modification.includes('project')) {
+                botState.step = 'projectDetails';
+                addBotMessage(`Please provide your project details again:`);
+                const input = document.getElementById('chatInput');
+                input.placeholder = "Describe your project details...";
+            }
+        }
+
+        function showRecaptchaModal() {
+            const modal = document.getElementById('chatRecaptchaModal');
+            modal.classList.remove('hidden');
+            setTimeout(function() {
+                // Solo renderiza si no existe el widget
+                if (chatModalRecaptchaWidgetId === null && typeof grecaptcha !== 'undefined') {
+                    chatModalRecaptchaWidgetId = grecaptcha.render('chat-modal-recaptcha-container', {
+                        'sitekey': '{{ config["RECAPTCHA_PUBLIC_KEY"] }}',
+                        'callback': function() { chatModalRecaptchaValidated = true; }
+                    });
+                } else if (typeof grecaptcha !== 'undefined' && chatModalRecaptchaWidgetId !== null) {
+                    grecaptcha.reset(chatModalRecaptchaWidgetId);
+                    chatModalRecaptchaValidated = false;
+                }
+            }, 100); // Espera a que el modal sea visible
+        }
+
+        function closeRecaptchaModal() {
+            const recaptchaModal = document.getElementById('recaptchaModal');
+            recaptchaModal.classList.add('hidden');
+            grecaptcha.reset(); // Reset reCAPTCHA widget
+            document.getElementById('recaptcha-container').innerHTML = ''; // Clear previous reCAPTCHA
+        }
+
+        function verifyAndSend() {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse) {
+                // reCAPTCHA verified, proceed with sending data
+                closeRecaptchaModal();
+                
+                // Show success message
+                addBotMessage(`<div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-paper-plane text-green-600"></i>
+                        <span class="font-semibold text-gray-800">Sending Information to Advisor</span>
+                    </div>
+                    
+                    <div class="bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+                        <p class="text-sm font-medium text-green-800 mb-3">Your information has been sent to an advisor!</p>
+                        
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-clock text-green-600"></i>
+                                <span>You will receive a response within 24 hours</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-envelope text-green-600"></i>
+                                <span>Check your email: ${botState.userData.email}</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-phone text-green-600"></i>
+                                <span>Or call us directly: 786-747-4766</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                        <p class="text-sm text-blue-800">
+                            <i class="fas fa-lightbulb mr-2"></i>
+                            While you wait, you can explore our website for more information about our services.
+                        </p>
+                    </div>
+                </div>`);
+                
+                // Add contact button
+                setTimeout(() => {
+                    addAdvisorContactButton();
+                }, 1000);
+                
+                // In a real application, you would send userData and projectDetails to your backend
+                // Example of sending data (replace with your actual API call):
+                /*
+                fetch('/send-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: botState.userData.name,
+                        email: botState.userData.email,
+                        phone: botState.userData.phone,
+                        inquiryType: botState.userData.inquiryType,
+                        projectDetails: botState.userData.projectDetails,
+                        recaptchaResponse: recaptchaResponse
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Success message already shown above
+                    } else {
+                        addBotMessage('Failed to send information. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addBotMessage('An error occurred while sending your information.');
+                });
+                */
+                
+            } else {
+                addBotMessage('Please complete the reCAPTCHA to send your information.');
+            }
+        }
+
+        // Lógica para el modal exclusivo del chat/advisor
+        let chatModalRecaptchaWidgetId = null;
+        let chatModalRecaptchaValidated = false;
+
+        function openChatRecaptchaModal() {
+            const modal = document.getElementById('chatRecaptchaModal');
+            modal.classList.remove('hidden');
+            setTimeout(function() {
+                if (chatModalRecaptchaWidgetId === null && typeof grecaptcha !== 'undefined') {
+                    chatModalRecaptchaWidgetId = grecaptcha.render('chat-modal-recaptcha-container', {
+                        'sitekey': '{{ config["RECAPTCHA_PUBLIC_KEY"] }}',
+                        'callback': function() { chatModalRecaptchaValidated = true; }
+                    });
+                } else if (typeof grecaptcha !== 'undefined' && chatModalRecaptchaWidgetId !== null) {
+                    grecaptcha.reset(chatModalRecaptchaWidgetId);
+                    chatModalRecaptchaValidated = false;
+                }
+            }, 100); // Espera a que el modal sea visible
+        }
+
+        function closeChatRecaptchaModal() {
+            document.getElementById('chatRecaptchaModal').classList.add('hidden');
+            if (chatModalRecaptchaWidgetId !== null && typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset(chatModalRecaptchaWidgetId);
+                chatModalRecaptchaValidated = false;
+            }
+        }
+
+        function chatVerifyAndSend() {
+            if (chatModalRecaptchaValidated) {
+                var recaptchaTextarea = document.getElementById('chat-modal-recaptcha-container').querySelector('textarea[name="g-recaptcha-response"]');
+                var recaptchaToken = recaptchaTextarea ? recaptchaTextarea.value : '';
+
+                // Obtén los datos del chat/advisor (ajusta según tu flujo de chat)
+                var name = botState.userData.name || '';
+                var email = botState.userData.email || '';
+                var phone = botState.userData.phone || '';
+                var type_of_request = 'chat';
+                var address = '';
+                var referral = '';
+                var other_details = botState.userData.projectDetails || '';
+                var message = botState.userData.inquiryType || '';
+
+                fetch('/chat-advisor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        type_of_request: type_of_request,
+                        address: address,
+                        referral: referral,
+                        other_details: other_details,
+                        message: message,
+                        recaptcha: recaptchaToken
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    closeChatRecaptchaModal();
+                    if (data.success) {
+                        alert('¡Información enviada correctamente!');
+                    } else {
+                        alert('Error: ' + (data.error || 'No se pudo enviar.'));
+                    }
+                })
+                .catch(error => {
+                    closeChatRecaptchaModal();
+                    alert('Error de red: ' + error);
+                });
+            } else {
+                alert('Please complete the reCAPTCHA verification.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var chatSendToAdvisorBtn = document.getElementById('chatSendToAdvisorBtn');
+            if (chatSendToAdvisorBtn) {
+                chatSendToAdvisorBtn.addEventListener('click', chatVerifyAndSend);
+            }
+            var closeChatRecaptchaModalBtn = document.getElementById('closeChatRecaptchaModalBtn');
+            if (closeChatRecaptchaModalBtn) {
+                closeChatRecaptchaModalBtn.addEventListener('click', closeChatRecaptchaModal);
+            }
+            var closeChatRecaptchaModalX = document.getElementById('closeChatRecaptchaModal');
+            if (closeChatRecaptchaModalX) {
+                closeChatRecaptchaModalX.addEventListener('click', closeChatRecaptchaModal);
+            }
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html> 

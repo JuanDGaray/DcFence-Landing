@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% block title %}DCFence - Professional Perimeter Security | Security Fences{% endblock %}
+
+{% block meta_description %}DCFence is a leader in perimeter security. We install residential, commercial and governmental security fences with advanced technology. Over 8 years protecting properties.{% endblock %}
+
+{% block meta_keywords %}security fences, perimeter security, residential fences, commercial fences, governmental fences, property protection, security systems{% endblock %}
+
+{% block og_title %}DCFence - Professional Perimeter Security{% endblock %}
+
+{% block og_description %}Specialists in security fence installation for residential, commercial and governmental properties with over 8 years of experience.{% endblock %}
+
+{% block content %}
+<!-- Animated Banner Mejorado Azul con Blur -->
+<div class="w-full bg-blue-700/80 backdrop-blur-md py-3 shadow-lg relative z-50 overflow-x-hidden">
+    <div class="flex items-center justify-center space-x-4 animate-marquee hidden md:flex">
+        <span class="text-2xl md:text-3xl">🚀</span>
+        <span class="text-white font-extrabold text-lg md:text-2xl tracking-wide drop-shadow-lg">
+            Request a quote today and get a response within <span class="underline decoration-2 decoration-white">24 hours!</span>
+        </span>
+        <a href="{{ url_for('contact') }}" class="ml-6 inline-block px-6 py-2 bg-white text-blue-700 font-bold rounded-full shadow hover:bg-blue-700 hover:text-white transition-all duration-200 border-2 border-white">
+            Get Free Quote
+        </a>
+    </div>
+    <div class="flex items-center justify-center space-x-2 md:hidden">
+        <span class="text-2xl">🚀</span>
+        <span class="text-white font-bold text-base">Request a quote today and get a response within 24 hours!</span>
+        <a href="{{ url_for('contact') }}" class="ml-2 px-4 py-1 bg-white text-blue-700 font-bold rounded-full shadow hover:bg-blue-700 hover:text-white transition-all duration-200 border-2 border-white text-sm">
+            Quote
+        </a>
+    </div>
+</div>
+<style>
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee {
+  display: inline-flex;
+  min-width: 100%;
+  animation: marquee 18s linear infinite;
+}
+</style>
+<!-- Hero Section -->
+<section class="relative bg-gray-900 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+             alt="Professional security fence" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-600/90"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Top Rated 
+                    <span class="text-blue-300">Security Fence Company</span>
+                </h1>
+                <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                    For the highest quality security fences, best service and industry's best warranty
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{{ url_for('contact') }}" 
+                       class="btn-primary inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-lg shadow-lg">
+                        <i class="fas fa-phone mr-3"></i>
+                        Request Quote
+                    </a>
+                    <a href="{{ url_for('blog') }}" 
+                       class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
+                        <i class="fas fa-book mr-3"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <div class="grid grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white mb-2">
+                            <span class="counter" data-target="500">0</span>+
+                        </div>
+                        <div class="text-gray-200 text-sm">Projects Completed</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white mb-2">
+                            <span class="counter" data-target="8">0</span>+
+                        </div>
+                        <div class="text-gray-200 text-sm">Years of Experience</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+                            <span class="counter" data-target="100">0</span>%
+                        </div>
+                        <div class="text-gray-200 text-sm">Satisfaction Guaranteed</div>
+                    </div>
+                </div>
+                
+                <!-- Additional CTA Button -->
+                <div class="mt-8 text-center">
+                    <a href="{{ url_for('contact') }}" 
+                       class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white text-blue-600 rounded-lg shadow-lg hover:bg-gray-100 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-user-tie mr-3"></i>
+                        Request Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our Services
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Perimeter fence solutions for homes, businesses, schools, and public buildings. Quality, durability, and professional installation.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Residential Fences -->
+            <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-home text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Residential Fences</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Secure and enhance your home with custom-designed fences that match your property style and provide peace of mind.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Custom design
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        High-quality materials
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Professional installation
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Commercial Fences -->
+            <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-building text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Commercial Fences</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Protect your business, employees, and assets with durable fencing solutions tailored for commercial properties.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Access control
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        24/7 support
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Maintenance plans
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Governmental Fences (Schools, Public Buildings) -->
+            <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fas fa-university text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Government & Schools</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Secure perimeters for schools, parks, and public buildings. Safety and compliance for community spaces.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        School & campus fencing
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Public building protection
+                    </li>
+                    <li class="flex items-center text-gray-700">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Code compliance
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+                    Why Choose DC Fence Solutions?
+                </h2>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                            <i class="fas fa-award text-xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Proven Experience</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Over 8 years in the market with hundreds of successful residential, commercial, and public projects in South Florida.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                            <i class="fas fa-tools text-xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Quality Materials</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                We use only the best materials and modern techniques to ensure long-lasting, secure fences.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                            <i class="fas fa-clock text-xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Reliable Support</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Our team is available to answer your questions and provide support before, during, and after installation.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                            <i class="fas fa-certificate text-xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Licensed & Insured</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                Fully licensed and insured for all types of fencing projects in Florida.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <img src="{{ url_for('static', filename='images/fence.png') }}" 
+                     alt="Perimeter security system" 
+                     class="rounded-2xl shadow-2xl">
+                <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-xl text-green-600"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-gray-900">500+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What Our Clients Say
+            </h2>
+            <p class="text-xl text-gray-600">
+                Testimonials from satisfied clients with our services
+            </p>
+        </div>
+        
+        <!-- Testimonial Carousel -->
+        <div class="relative">
+            <button id="testimonial-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow hover:bg-blue-100 transition hidden md:block">
+                <i class="fas fa-chevron-left text-blue-600"></i>
+            </button>
+            <div id="testimonial-slider" class="overflow-hidden">
+                <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out">
+                    {% set testimonials = [
+                        {'name': 'Carlos Rodriguez', 'role': 'Residential Owner', 'text': 'DCFence installed a fence system at my residence that exceeded all my expectations. The team was professional, punctual and the result is excellent.'},
+                        {'name': 'Maria Gonzalez', 'role': 'School Principal', 'text': 'We needed a safe perimeter for our school. DC Fence Solutions delivered a beautiful and secure fence. Highly recommended!'},
+                        {'name': 'Robert Silva', 'role': 'Condominium Manager', 'text': 'We protected 150 homes with DCFence. The reduction in security incidents was 95% in the first year. Worth every penny.'},
+                        {'name': 'Ana Torres', 'role': 'Business Owner', 'text': 'Professional, fast, and reliable. Our business is now much safer and looks great.'},
+                        {'name': 'John Smith', 'role': 'Property Manager', 'text': 'Excellent service and quality. The team was very attentive to our needs.'},
+                        {'name': 'Laura Perez', 'role': 'Homeowner', 'text': 'The fence installation was quick and clean. I feel much safer now.'},
+                        {'name': 'Miguel Lopez', 'role': 'Public Works Director', 'text': 'They fenced our public park and the result was outstanding. Community is happy!'},
+                        {'name': 'Sofia Martinez', 'role': 'School Administrator', 'text': 'Great experience from start to finish. The school perimeter is now secure.'},
+                        {'name': 'David Kim', 'role': 'Commercial Client', 'text': 'Very professional and the warranty is the best in the industry.'},
+                        {'name': 'Patricia Brown', 'role': 'HOA President', 'text': 'Our neighborhood looks amazing and is much safer. Thank you DC Fence Solutions!'}
+                    ] %}
+                    {% for t in testimonials %}
+                    <div class="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] px-4 my-5">
+                        <div class="card-hover bg-white rounded-2xl p-8 shadow-lg h-full flex flex-col">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-user text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">{{ t.name }}</h4>
+                                    <p class="text-gray-600 text-sm">{{ t.role }}</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-6 leading-relaxed flex-1">
+                                "{{ t.text }}"
+                            </p>
+                            <div class="flex text-yellow-400 stars-animate opacity-0">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button id="testimonial-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 rounded-full p-2 shadow hover:bg-blue-100 transition hidden md:block">
+                <i class="fas fa-chevron-right text-blue-600"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 gradient-bg">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to protect your property?
+        </h2>
+        <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+            Our experts are ready to evaluate your security needs and provide you with a personalized solution.
+        </p>
+        <a href="{{ url_for('contact') }}" 
+           class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold bg-white text-blue-600 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300">
+            <i class="fas fa-phone mr-3"></i>
+            Contact Now
+        </a>
+    </div>
+</section>
+{% endblock %} 
+
+{% block scripts %}
+{{ super() }}
+<script>
+(function() {
+    const track = document.getElementById('testimonial-track');
+    const prevBtn = document.getElementById('testimonial-prev');
+    const nextBtn = document.getElementById('testimonial-next');
+    const slides = track.children.length;
+    let current = 0;
+    let visible = 1;
+    if (window.innerWidth >= 1024) visible = 3;
+    else if (window.innerWidth >= 768) visible = 2;
+    function updateSlider() {
+        const slideWidth = track.children[0].offsetWidth;
+        track.style.transform = `translateX(-${current * slideWidth}px)`;
+        // Animate stars
+        document.querySelectorAll('.stars-animate').forEach((el, idx) => {
+            el.classList.remove('opacity-100');
+            el.classList.add('opacity-0');
+            if (idx >= current && idx < current + visible) {
+                setTimeout(() => {
+                    el.classList.remove('opacity-0');
+                    el.classList.add('opacity-100');
+                }, 300);
+            }
+        });
+    }
+    function next() {
+        current = (current + 1) % (slides - visible + 1);
+        updateSlider();
+    }
+    function prev() {
+        current = (current - 1 + (slides - visible + 1)) % (slides - visible + 1);
+        updateSlider();
+    }
+    nextBtn && nextBtn.addEventListener('click', next);
+    prevBtn && prevBtn.addEventListener('click', prev);
+    let auto = setInterval(next, 4000);
+    track.addEventListener('mouseenter', () => clearInterval(auto));
+    track.addEventListener('mouseleave', () => auto = setInterval(next, 4000));
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) visible = 3;
+        else if (window.innerWidth >= 768) visible = 2;
+        else visible = 1;
+        if (current > slides - visible) current = 0;
+        updateSlider();
+    });
+    updateSlider();
+})();
+</script>
+{% endblock %} 
